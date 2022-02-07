@@ -1,0 +1,141 @@
+.......XML CODE......
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="270dp"
+        android:layout_height="71dp"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:text="Result:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edit1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edit2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:ems="10"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="151dp"
+        android:layout_height="63dp"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:text="+" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:layout_row="4"
+        android:layout_column="0"
+        android:text="_" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="151dp"
+        android:layout_height="62dp"
+        android:layout_row="5"
+        android:layout_column="0"
+        android:text="*" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:layout_row="6"
+        android:layout_column="0"
+        android:text="/" />
+
+</GridLayout>
+
+
+......JAVA CODE......
+
+package com.example.calculator;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+    private Button b1,b2,b3,b4;
+
+    private EditText e1,e2;
+    private TextView t;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        e1=(EditText)findViewById(R.id.edit1);
+        e2=(EditText)findViewById(R.id.edit2);
+        b1=(Button)findViewById(R.id.button);
+        b2=(Button)findViewById(R.id.button2);
+        b3=(Button)findViewById(R.id.button3);
+        b4=(Button)findViewById(R.id.button4);
+
+        t=(TextView)findViewById(R.id.textView);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Integer i1=Integer.parseInt(e1.getText().toString());
+                Integer i2=Integer.parseInt(e2.getText().toString());
+                Integer i3=i1+i2;
+                t.setText(Integer.toString(i3));
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Integer i1=Integer.parseInt(e1.getText().toString());
+                Integer i2=Integer.parseInt(e2.getText().toString());
+                Integer i3=i1-i2;
+                t.setText(Integer.toString(i3));
+            }
+        });
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Integer i1=Integer.parseInt(e1.getText().toString());
+                Integer i2=Integer.parseInt(e2.getText().toString());
+                Integer i3=i1*i2;
+                t.setText(Integer.toString(i3));
+            }
+        });
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Integer i1=Integer.parseInt(e1.getText().toString());
+                Integer i2=Integer.parseInt(e2.getText().toString());
+                Integer i3=i1/i2;
+                t.setText(Integer.toString(i3));
+            }
+        });
+    }
+}
