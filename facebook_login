@@ -1,0 +1,132 @@
+----XML file---
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5fb0c9"
+    android:orientation="vertical"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="Login"
+        android:textColor="#fff"
+        android:textSize="26sp"
+        android:textStyle="bold"
+     android:layout_marginBottom="16dp"
+        android:layout_marginTop="22dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="-287dp"
+        android:layout_marginRight="30dp"
+        android:background="#fff"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="30dp">
+
+            <EditText
+                android:id="@+id/e1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawableTint="#FF4081"
+                android:hint="User Name"
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/e2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawableTint="#FF4081"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:paddingTop="5dp"
+                android:text="Forgot Password?" />
+
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="22dp"
+                android:background="#d67601"
+                android:text="Sign in"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="183dp"
+        android:layout_height="159dp"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-556dp"
+        android:src="@drawable/logo" />
+
+
+</RelativeLayout>
+
+
+----Java File-----
+
+package com.example.login;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+EditText e1,e2;
+Button b;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        e1=findViewById(R.id.e1);
+        e2=findViewById(R.id.e2);
+        b=findViewById(R.id.button);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(e1.getText().toString().equals("admin")&& e2.getText().toString().equals("admin")){
+                    Toast.makeText(getApplicationContext(),"authenicated",Toast.LENGTH_LONG).show();
+
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"wrong credentials",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+}
